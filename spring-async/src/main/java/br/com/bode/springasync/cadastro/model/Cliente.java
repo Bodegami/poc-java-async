@@ -13,16 +13,19 @@ public class Cliente {
     private String nome;
     private String sobrenome;
     private String telefone;
-    private String cep;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
+    private Endereco endereco;
 
     public Cliente() {
     }
 
-    public Cliente(String nome, String sobrenome, String telefone, String cep) {
+    public Cliente(String nome, String sobrenome, String telefone, Endereco endereco) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.telefone = telefone;
-        this.cep = cep;
+        this.endereco = endereco;
     }
 
     public String getNome() {
@@ -49,21 +52,30 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public String getCep() {
-        return cep;
+    public Long getId() {
+        return id;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     @Override
     public String toString() {
         return "Cliente{" +
-                "nome='" + nome + '\'' +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
                 ", sobrenome='" + sobrenome + '\'' +
                 ", telefone='" + telefone + '\'' +
-                ", cep='" + cep + '\'' +
+                ", endereco=" + endereco +
                 '}';
     }
 }

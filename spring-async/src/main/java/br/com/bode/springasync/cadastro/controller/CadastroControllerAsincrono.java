@@ -23,7 +23,7 @@ public class CadastroControllerAsincrono {
         service.executeAsincrono(request);
         long fim = System.currentTimeMillis();
 
-        return "Execucao sincrona em " + (fim - inicio) + " ms";
+        return "Execucao asincrona em " + (fim - inicio) + " ms";
     }
 
 
